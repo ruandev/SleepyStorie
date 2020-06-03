@@ -41,8 +41,9 @@
         android:layout_width="357dp"
         android:layout_height="264dp"
         android:layout_marginTop="32dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/sleepy_story" />
 </androidx.constraintlayout.widget.ConstraintLayout>
