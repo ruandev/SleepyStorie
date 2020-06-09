@@ -3,7 +3,9 @@ package dev.ruanvictor.sleepystorie.ui.activities;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +28,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     private TextInputEditText textName, textEmail, textBirthday, textCelular, textAddress, textCity, textCEP, textPassword, textConfirmPassword;
     private TextInputLayout textNameLayout, textEmailLayout, textBirthdayLayout, textCelularLayout, textAddressLayout, textCityLayout, textCEPLayout, textPasswordLayout, textConfirmPasswordLayout;
-
+    private Spinner uf;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +52,12 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         textPasswordLayout = findViewById(R.id.textPasswordLayout);
         textConfirmPassword = findViewById(R.id.textConfirmPassword);
         textConfirmPasswordLayout = findViewById(R.id.textConfirmPasswordLayout);
+
+        uf = findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.states, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        uf.setAdapter(adapter);
+
 
         Button buttonSignUp = findViewById(R.id.buttonSignUp);
         buttonSignUp.setOnClickListener(this);
@@ -82,6 +90,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                         .birthday(textBirthday.getText().toString())
                         .celular(textCelular.getText().toString())
                         .cep(textCEP.getText().toString())
+                        .cep(uf.getSelectedItem().toString())
                         .build();
 
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(MyConstants.USERS);
@@ -96,12 +105,17 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             } catch (FirebaseAuthWeakPasswordException e) {
                 textPasswordLayout.setError(getString(R.string.password_weak));
                 textPasswordLayout.setErrorEnabled(true);
+                Toast.makeText(SignUpActivity.this, "Verifique os erros no formulário!", Toast.LENGTH_LONG).show();
             } catch (FirebaseAuthUserCollisionException e) {
                 Toast.makeText(SignUpActivity.this, "Usuário já existe!", Toast.LENGTH_LONG).show();
             } catch (FirebaseAuthInvalidCredentialsException e) {
-                Toast.makeText(SignUpActivity.this, "Email inválido!", Toast.LENGTH_LONG).show();
+                textEmailLayout.setError("Email inválido!");
+                textEmailLayout.setErrorEnabled(true);
+                Toast.makeText(SignUpActivity.this, "Verifique os erros no formulário!", Toast.LENGTH_LONG).show();
             } catch (Exception e) {
                 Log.e("SIGNUP", "Erro ao criar usuário: " + e.getMessage());
+                e.printStackTrace();
+                Toast.makeText(SignUpActivity.this, "Erro ao criar um usuário!", Toast.LENGTH_LONG).show();
             }
         });
     }

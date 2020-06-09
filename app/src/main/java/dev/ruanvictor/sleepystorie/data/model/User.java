@@ -16,5 +16,5 @@ public class User {
     private String address;
     private String city;
     private String cep;
-
+    private String uf;
 }
