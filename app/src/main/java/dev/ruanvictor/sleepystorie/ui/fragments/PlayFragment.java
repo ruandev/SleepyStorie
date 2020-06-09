@@ -1,9 +1,7 @@
-package dev.ruanvictor.sleepystorie.fragments;
+package dev.ruanvictor.sleepystorie.ui.fragments;
 
-import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -14,8 +12,6 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-import java.time.LocalTime;
-import java.util.Calendar;
 import java.util.Random;
 
 import dev.ruanvictor.sleepystorie.R;

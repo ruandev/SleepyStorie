@@ -10,14 +10,14 @@ import java.util.List;
 
 import dev.ruanvictor.sleepystorie.R;
 import dev.ruanvictor.sleepystorie.adapter.RecommendAdapter;
-import dev.ruanvictor.sleepystorie.model.Book;
-import dev.ruanvictor.sleepystorie.utils.MountBooks;
+import dev.ruanvictor.sleepystorie.data.model.Book;
+import dev.ruanvictor.sleepystorie.data.repository.BookRepository;
 import dev.ruanvictor.sleepystorie.utils.UIUtil;
 
 public class RecommendationContainer {
 
     public static void showGridRecommendation(View view, Context context, FragmentManager fragmentManager) {
-        List<Book> books = MountBooks.books();
+        List<Book> books = new BookRepository().getAllBooks();
 
         RecommendAdapter recommendAdapter = new RecommendAdapter(context, R.layout.item_recommend, books);
         GridView gridViewRecommend = view.findViewById(R.id.gridViewRecommend);

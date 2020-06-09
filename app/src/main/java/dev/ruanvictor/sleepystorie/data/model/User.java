@@ -1,9 +1,4 @@
-package dev.ruanvictor.sleepystorie.model;
-
-import androidx.annotation.NonNull;
-
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserInfo;
+package dev.ruanvictor.sleepystorie.data.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

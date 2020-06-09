@@ -7,8 +7,8 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.textfield.TextInputLayout;
 
 import dev.ruanvictor.sleepystorie.R;
-import dev.ruanvictor.sleepystorie.fragments.DetailBookFragment;
-import dev.ruanvictor.sleepystorie.model.Book;
+import dev.ruanvictor.sleepystorie.ui.fragments.DetailBookFragment;
+import dev.ruanvictor.sleepystorie.data.model.Book;
 
 public class UIUtil {
 

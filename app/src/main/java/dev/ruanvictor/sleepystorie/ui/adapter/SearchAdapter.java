@@ -1,4 +1,4 @@
-package dev.ruanvictor.sleepystorie.adapter;
+package dev.ruanvictor.sleepystorie.ui.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,20 +8,27 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.Adapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dev.ruanvictor.sleepystorie.listeners.OnBookListener;
 import dev.ruanvictor.sleepystorie.R;
-import dev.ruanvictor.sleepystorie.model.Book;
+import dev.ruanvictor.sleepystorie.data.model.Book;
 
-public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHolder> {
-    private List<Book> books;
+public class SearchAdapter extends Adapter<SearchAdapter.MyViewHolder> {
+    private List<Book> books = new ArrayList<>();
     private OnBookListener onBookListener;
 
-    public SearchAdapter(List<Book> books, OnBookListener onBookListener) {
-        this.books = books;
+    public SearchAdapter(OnBookListener onBookListener) {
         this.onBookListener = onBookListener;
+    }
+
+    public void add(List<Book> items) {
+        this.books.clear();
+        this.books.addAll(items);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -30,7 +37,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         View itemList = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_list, parent, false);
 
-        return new MyViewHolder(itemList, onBookListener);
+        return new SearchAdapter.MyViewHolder(itemList, onBookListener);
     }
 
     @Override

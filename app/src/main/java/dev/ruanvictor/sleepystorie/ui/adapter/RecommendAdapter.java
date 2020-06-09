@@ -13,9 +13,9 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-import dev.ruanvictor.sleepystorie.listeners.OnBookListener;
 import dev.ruanvictor.sleepystorie.R;
-import dev.ruanvictor.sleepystorie.model.Book;
+import dev.ruanvictor.sleepystorie.data.model.Book;
+import dev.ruanvictor.sleepystorie.listeners.OnBookListener;
 
 public class RecommendAdapter extends ArrayAdapter<Book> {
     private List<Book> books;

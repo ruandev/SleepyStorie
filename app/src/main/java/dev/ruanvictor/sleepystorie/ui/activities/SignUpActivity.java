@@ -1,4 +1,4 @@
-package dev.ruanvictor.sleepystorie;
+package dev.ruanvictor.sleepystorie.ui.activities;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -11,12 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import dev.ruanvictor.sleepystorie.model.User;
+import dev.ruanvictor.sleepystorie.R;
+import dev.ruanvictor.sleepystorie.data.model.User;
 import dev.ruanvictor.sleepystorie.utils.MyConstants;
 import dev.ruanvictor.sleepystorie.utils.UIUtil;
 
@@ -96,6 +98,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 textPasswordLayout.setErrorEnabled(true);
             } catch (FirebaseAuthUserCollisionException e) {
                 Toast.makeText(SignUpActivity.this, "Usuário já existe!", Toast.LENGTH_LONG).show();
+            } catch (FirebaseAuthInvalidCredentialsException e) {
+                Toast.makeText(SignUpActivity.this, "Email inválido!", Toast.LENGTH_LONG).show();
             } catch (Exception e) {
                 Log.e("SIGNUP", "Erro ao criar usuário: " + e.getMessage());
             }

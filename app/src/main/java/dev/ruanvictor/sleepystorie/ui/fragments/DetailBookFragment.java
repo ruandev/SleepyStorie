@@ -1,9 +1,6 @@
-package dev.ruanvictor.sleepystorie.fragments;
+package dev.ruanvictor.sleepystorie.ui.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,15 +8,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import dev.ruanvictor.sleepystorie.R;
-import dev.ruanvictor.sleepystorie.containers.RecommendationContainer;
-import dev.ruanvictor.sleepystorie.model.Book;
+import dev.ruanvictor.sleepystorie.data.model.Book;
+import dev.ruanvictor.sleepystorie.viewmodel.BooksViewModel;
+
+import static dev.ruanvictor.sleepystorie.containers.RecommendationContainer.showGridRecommendation;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class DetailBookFragment extends Fragment {
+    private BooksViewModel booksViewModel;
 
     public DetailBookFragment() {
         // Required empty public constructor
@@ -42,7 +45,9 @@ public class DetailBookFragment extends Fragment {
         coverDetail.setImageResource(book.getCover());
         coverDetail.setContentDescription(book.getTitle());
 
-        RecommendationContainer.showGridRecommendation(view, getContext(), getFragmentManager());
+        booksViewModel = new ViewModelProvider(this).get(BooksViewModel.class);
+
+        showGridRecommendation(view, getContext(), getFragmentManager());
 
         return view;
     }

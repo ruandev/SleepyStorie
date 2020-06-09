@@ -1,4 +1,4 @@
-package dev.ruanvictor.sleepystorie;
+package dev.ruanvictor.sleepystorie.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,6 +37,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import dev.ruanvictor.sleepystorie.R;
 import dev.ruanvictor.sleepystorie.utils.UIUtil;
 
 

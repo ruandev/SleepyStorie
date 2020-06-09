@@ -1,4 +1,4 @@
-package dev.ruanvictor.sleepystorie.fragments;
+package dev.ruanvictor.sleepystorie.ui.fragments;
 
 import android.os.Bundle;
 

@@ -1,29 +1,33 @@
-package dev.ruanvictor.sleepystorie.fragments;
+package dev.ruanvictor.sleepystorie.ui.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import dev.ruanvictor.sleepystorie.listeners.OnBookListener;
 import dev.ruanvictor.sleepystorie.R;
-import dev.ruanvictor.sleepystorie.adapter.SearchAdapter;
-import dev.ruanvictor.sleepystorie.model.Book;
-import dev.ruanvictor.sleepystorie.utils.MountBooks;
+import dev.ruanvictor.sleepystorie.data.model.Book;
+import dev.ruanvictor.sleepystorie.listeners.OnBookListener;
+import dev.ruanvictor.sleepystorie.ui.adapter.SearchAdapter;
 import dev.ruanvictor.sleepystorie.utils.UIUtil;
+import dev.ruanvictor.sleepystorie.viewmodel.BooksViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class SearchFragment extends Fragment implements OnBookListener {
 
-    private List<Book> books;
+    private List<Book> allBooks;
+    private BooksViewModel booksViewModel;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -40,20 +44,22 @@ public class SearchFragment extends Fragment implements OnBookListener {
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         listSearch.setLayoutManager(layoutManager);
-
-        books = MountBooks.books();
-
-        SearchAdapter searchAdapter = new SearchAdapter(this.books, this);
+        SearchAdapter searchAdapter = new SearchAdapter(this);
         listSearch.setAdapter(searchAdapter);
+
+        booksViewModel = new ViewModelProvider(this).get(BooksViewModel.class);
+        booksViewModel.getBooks().observe(getViewLifecycleOwner(), books -> {
+            Log.d("SEARCH", "onCreateView: "+books.size());
+            allBooks = books;
+            searchAdapter.add(books);
+        });
 
         return view;
     }
 
-
-
     @Override
     public void onBookClick(int position) {
-        Book book = books.get(position);
+        Book book = allBooks.get(position);
 
         UIUtil.openBookDetails(book, getFragmentManager());
     }
