@@ -28,36 +28,12 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <TextView
-        android:id="@+id/textPercent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
-
-    <TextView
         android:id="@+id/textTimeLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
-        android:text="|"
-        app:layout_constraintEnd_toStartOf="@+id/textTimeLeft"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/textPercent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -89,11 +65,11 @@
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonVolumeDown"
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:background="@drawable/ic_access_alarm_black_24dp"
+        android:background="@drawable/ic_baseline_volume_down_24"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/buttonReplay10"
         app:layout_constraintHorizontal_bias="0.5"
@@ -110,17 +86,17 @@
         android:layout_marginEnd="4dp"
         android:background="@drawable/ic_replay_10_black_24dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toStartOf="@+id/button8"
+        app:layout_constraintEnd_toStartOf="@+id/buttonPlayPause"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/buttonVolumeDown"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/buttonPlayPause"
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:background="@drawable/ic_play_circle_filled_black_24dp"
+        android:background="@drawable/ic_pause_circle_filled_24"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/buttonForward10"
         app:layout_constraintHorizontal_bias="0.5"
@@ -136,17 +112,17 @@
         android:layout_marginEnd="4dp"
         android:background="@drawable/ic_forward_10_black_24dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toStartOf="@+id/button10"
+        app:layout_constraintEnd_toStartOf="@+id/buttonVolumeUp"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button8"
+        app:layout_constraintStart_toEndOf="@+id/buttonPlayPause"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/buttonVolumeUp"
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:background="@drawable/ic_access_alarm_black_24dp"
+        android:background="@drawable/ic_baseline_volume_up_24"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
